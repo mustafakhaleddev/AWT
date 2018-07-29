@@ -41,6 +41,14 @@ You can use our blade directive for fast translation
 ```php
  @awt('Hello World !')
 ```
+### Customize Locale
+
+You can customize the locale by adding it as a second argument
+```php
+awtTrans('Hello World !', 'ar')
+{{awtTrans('Hello World !', 'ar')}}
+@awt('Hello World !', 'ar')
+```
 
 ## License
 
