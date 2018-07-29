@@ -44,4 +44,4 @@ You can use our blade directive for fast translation
 
 ## License
 
-[MIT](LICENSE) © [Mustafa Khaled](https://github.com/Dirape)
+[MIT](LICENSE) © [Mustafa Khaled](https://www.facebook.com/Mustafa.Khaled.Zaki)
