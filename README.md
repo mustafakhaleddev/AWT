@@ -1,6 +1,7 @@
 # AWT Translation
 
 ![AWT](https://mustafakhaled.com/images/awt.png)
+Create Laravel Lang file for current locale and translate the keys from google
 
 Laravel Awesome Translation Helper using Google Translation
 ```php
