@@ -1,0 +1,43 @@
+{
+  "name": "mkhdev/awt",
+  "description": "Awesome Translation For Laravel",
+  "authors": [
+    {
+      "name": "MustafaKhaled",
+      "email": "MustafaKhaled.dev@gmail.com"
+    }
+  ],
+  "keywords": [
+    "laravel",
+    "translate",
+    "localization",
+    "translation",
+    "language",
+    "laravel localization",
+    "localization",
+    "laravel multi language",
+    "multi language",
+    "multilingual",
+    "multilingual support",
+    "laravel lang"
+  ],
+  "license": "MIT",
+  "require": {
+    "stichoza/google-translate-php": "^3.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "mkhdev\\AWT\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "mkhdev\\AWT\\AWTServiceProvider"
+      ],
+      "aliases": {
+      }
+    }
+  },
+  "minimum-stability": "stable"
+}
