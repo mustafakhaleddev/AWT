@@ -30,9 +30,7 @@ Publish package config file "awt.php" to access new customize features
 php artisan vendor:publish --provider=mkhdev\AWT\AWTServiceProvider
 ```
 - This file allow you to Enable/Disable Google Translator
-<br>
 - Enable/Disable application current locale for translator 
-<br>
 - Set default locale if you disabled app locale for translator
 
 ## Documentation
