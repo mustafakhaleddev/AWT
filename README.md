@@ -24,6 +24,16 @@ Add the service provider to `config/app.php` in the `providers` array, or if you
 mkhdev\AWT\AWTServiceProvider::class,
 ```
 
+#### ★ New Config File
+Publish package config file "awt.php" to access new customize features
+```php
+php artisan vendor:publish --provider=mkhdev\AWT\AWTServiceProvider
+```
+- This file allow you to Enable/Disable Google Translator
+<br>
+- Enable/Disable application current locale for translator 
+<br>
+- Set default locale if you disabled app locale for translator
 
 ## Documentation
 
@@ -52,4 +62,4 @@ awtTrans('Hello World !', 'ar')
 
 ## License
 
-[MIT](LICENSE) © [Mustafa Khaled](https://www.facebook.com/Mustafa.Khaled.Zaki)
+[MIT](LICENSE) © [Mustafa Khaled](https://github.com/mustafakhaleddev)

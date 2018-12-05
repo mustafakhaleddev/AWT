@@ -15,9 +15,8 @@ class AWTServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-
         $this->registerDirectives();
-
+        $this->publishConfig();
     }
 
     /**
@@ -27,7 +26,7 @@ class AWTServiceProvider extends ServiceProvider
      */
     public function register()
     {
-
+        $this->mergeConfig();
 
     }
 
@@ -43,4 +42,34 @@ class AWTServiceProvider extends ServiceProvider
         $directives = require __DIR__.'/awtBlade.php';
         AWTClass::register($directives);
     }
+
+
+    /**
+     * merge awt config file with application config files
+     */
+    private function mergeConfig()
+    {
+        $path = $this->getConfigPath();
+        $this->mergeConfigFrom($path, 'awt');
+    }
+
+    /**
+     * publish awt config file to application config folder
+     */
+    private function publishConfig()
+    {
+        $path = $this->getConfigPath();
+        $this->publishes([$path => config_path('awt.php')], 'config');
+    }
+
+
+    /**
+     * return package awt config file dir
+     * @return string
+     */
+    private function getConfigPath()
+    {
+        return __DIR__ . '/config/awt.php';
+    }
+
 }

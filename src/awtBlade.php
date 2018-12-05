@@ -6,7 +6,7 @@ return [
     | @awt(string)
     |---------------------------------------------------------------------
     */
-    'awt' => function ($expression, $locale = null) {
-        return  "<?php echo awtTrans($expression, $locale) ?>";
+    'awt' => function ($expression) {
+        return  "<?php echo awtTrans($expression) ?>";
     }
 ];

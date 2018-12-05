@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: DevaGo
- * Date: 7/29/2018
- * Time: 12:36 PM
- */
 
 namespace mkhdev\AWT;
 
@@ -72,7 +66,7 @@ class AWTClass
         $lines = array();
         foreach (file($AwtFile) as $line) {
             if (strpos($line, '#AWTLINEHELPER') !== false) {
-                array_push($lines, '"' . str_replace(' ', '', strtolower($word)) . '"=>"' . $translate . '",');
+                array_push($lines, '"' . $word. '"=>"' . $translate . '",');
                 array_push($lines, "\n");
 
             }

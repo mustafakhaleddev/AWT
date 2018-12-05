@@ -3,33 +3,57 @@
 if (!function_exists('awtTrans')) {
 
     /**
-     * AWT Trans Helper
-     *
+     * AWT translation helper function
      * @param $word
      * @param null $locale
-     * @return array|\Illuminate\Contracts\Translation\Translator|null|string
-     * @throws Exception
+     * @return string
      */
     function awtTrans($word, $locale = null)
     {
-        if ($locale == null) {
-            $locale = App::getLocale();
+
+
+        //Set Locale for translator
+        if ($locale == null)
+        {
+            if(config('awt.use_app_locale'))
+            {
+                $locale = App::getLocale();
+            }else
+            {
+                $locale=config('awt.default_locale');
+            }
         }
+
+
         $AwtFile = resource_path('lang/' . $locale . '/awt.php');
         if (file_exists($AwtFile)) {
-            if (Lang::has('awt.' . str_replace(' ', '', strtolower($word)), $locale)) {
-                $word = str_replace(' ', '', strtolower($word));
+            if (Lang::get('awt.' . $word,[],$locale,false)!='awt.' . $word) {
                 return trans('awt.' . $word);
             }
         }
-        $langFile = \mkhdev\AWT\AWTClass::openAwtLangFile($AwtFile, $locale);
-        if ($langFile) {
-            $tr = new \Stichoza\GoogleTranslate\TranslateClient();
-            $wordT = $tr->setSource(null)->setTarget($locale)->translate($word);
-            \mkhdev\AWT\AWTClass::pushWord($word, $wordT, $AwtFile);
-            return $wordT;
+
+        try{
+            $langFile = \mkhdev\AWT\AWTClass::openAwtLangFile($AwtFile, $locale);
+            if ($langFile) {
+                if(config('awt.allow_google_translate'))
+                {
+                    $translateClient = new \Stichoza\GoogleTranslate\TranslateClient();
+                    $translatedWord = $translateClient->setSource(null)->setTarget($locale)->translate($word);
+
+                }else
+                {
+                    $translatedWord=$word;
+                }
+
+                \mkhdev\AWT\AWTClass::pushWord($word, $translatedWord, $AwtFile);
+                return $translatedWord;
+            }
+
+        }catch (Exception $e)
+        {
+            return $word;
         }
-        $word = str_replace(' ', '', strtolower($word));
+
         return trans('awt.' . $word);
     }
 }
